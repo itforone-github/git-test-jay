@@ -1,0 +1,61 @@
+1. 깃헙 초대 승인
+
+2. ssh-key 생성, 공개키 Github 등록
+레파지토리 접근을 위해 SSH Public Key 등록필요.
+
+2.1 cmd 실행 (ssh-key 생성)
+$ C:\Users\드림포원>ssh-keygen -t rsa -C "nonono220@gmail.com"
+Generating public/private rsa key pair.
+$ Enter file in which to save the key (C:\Users\드림포원/.ssh/id_rsa): ----> 엔터
+$ C:\Users\드림포원/.ssh/id_rsa already exists.
+$ Overwrite (y/n)? y
+$ Enter passphrase (empty for no passphrase): ----> 비밀번호입력 (인텔리제이 연동시 씀!)
+$ Enter same passphrase again:
+Your identification has been saved in C:\Users\드림포원/.ssh/id_rsa. ------> 인증키
+Your public key has been saved in C:\Users\드림포원/.ssh/id_rsa.pub. ------> 공개키
+The key fingerprint is:
+SHA256:7+CJ/sUrlo9Yl79qmjjzHptl10sipbMz83+OEBAfYyE nonono220@gmail.com
+The key's randomart image is:
++---[RSA 3072]----+
+|          E =.   |
+|           = o   |
+|          . .    |
+|           .     |
+|        S   o    |
+|         o + o   |
+|        +.% + o  |
+|      o*+#=B + o.|
+|     .=B%=**+o+o.|
++----[SHA256]-----+
+
+2.2 C:\Users\드림포원 경로로 이동해서 id_rsa.pub 열기
+ssh-rsa AAAAB3Nza..........cnNZs= nonono220@gmail.com 복사
+
+2.3 복사한 공개키 Github에 등록
+오른쪽상단 프로필 - Settings - SSH and GPG keys
+[ new SSH key ] 클릭
+title : itforone-ssh-key
+key : 2.2에서 복사한 키 입력
+
+
+3. Github 연동 (https://brunch.co.kr/@mystoryg/168 참고!)
+3.1 File - Settings - Version Control - Git
+[Test] 버튼눌러 Git이 설치되어있는지 확인. 안되어있으면 다운로드 인스톨 진행.
+
+3.2 File - Setting - Version Control - Github
+아이디 추가
+
+3.3 VCS - Enable Version Control Integration
+팝업에서 Git 선택후 OK
+
+3.4 Git - Manage Remotes 클릭
+팝업에서 [+] 버튼을 클릭하여 깃헙 URL 입력
+(ex. git@github.com:itforone-github/git-test-jay.git)
+비밀번호 입력창에 2.1에서 키 생성시 입력한 비밀번호 입력
+
+3.5 File - Settings - Plugins - .ignore 설치
+왼쪽 Project 폴더명 우클릭 - New - .ignore File - .gitignore File(Git) 클릭
+팝업창에서 Example user template 체크 후 [ Generate ]
+// .gitignore 파일이 생기는데 .gradle, build도 추가
+
+3.6 Commit 메시지 입력후 커밋앤푸시 진행 - github에 커밋되었는지 확인
